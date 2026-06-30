@@ -1,6 +1,5 @@
 /* ===========================================
-   little gallery — scrapbook desk theme
-   palette:
+  NOTES
    --cream-yellow: #FFFFC5
    --antique-white: #FAEBD7
    --lime: #7CFC00
@@ -18,6 +17,8 @@
   --snow: #FFFAFA;
   --sky-mint: #B8E3E9;
   --coral: #FF746C;
+  --gold: #FFD700;
+  --light-kaki: #F0E68C;
 
   --ink: #5b4636;
   --shadow: rgba(91, 70, 54, 0.18);
@@ -65,8 +66,7 @@ body {
 
 .sparkle {
   display: inline-block;
-  color: var(--lime);
-  filter: drop-shadow(0 0 6px rgba(124, 252, 0, 0.5));
+  color: var(--gold);
   animation: twinkle 2.4s ease-in-out infinite;
 }
 
@@ -151,7 +151,7 @@ body {
   box-shadow: 0 2px 3px rgba(91, 70, 54, 0.15);
 }
 
-.tape-mint::before  { background: var(--sky-mint); }
+.tape-light-kaki::before  { background: var(--light-kaki); }
 .tape-coral::before { background: var(--coral); }
 .tape-lime::before   { background: var(--lime); opacity: .8; }
 
