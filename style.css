@@ -1,0 +1,202 @@
+/* ===========================================
+   little gallery — scrapbook desk theme
+   palette:
+   --cream-yellow: #FFFFC5
+   --antique-white: #FAEBD7
+   --lime: #7CFC00
+   --tan: #D1B399
+   --snow: #FFFAFA
+   --sky-mint: #B8E3E9
+   --coral: #FF746C
+   =========================================== */
+
+:root {
+  --cream-yellow: #FFFFC5;
+  --antique-white: #FAEBD7;
+  --lime: #7CFC00;
+  --tan: #D1B399;
+  --snow: #FFFAFA;
+  --sky-mint: #B8E3E9;
+  --coral: #FF746C;
+
+  --ink: #5b4636;
+  --shadow: rgba(91, 70, 54, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--antique-white);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(91, 70, 54, 0.06) 1px, transparent 0);
+  background-size: 26px 26px;
+  font-family: 'Quicksand', sans-serif;
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ---------- header ---------- */
+
+.desk-header {
+  text-align: center;
+  padding: 4rem 1.5rem 2.5rem;
+}
+
+.eyebrow {
+  margin: 0 0 .4rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--coral);
+}
+
+.title {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(2.8rem, 7vw, 4.5rem);
+  font-weight: 700;
+  margin: 0;
+  color: var(--ink);
+}
+
+.sparkle {
+  display: inline-block;
+  color: var(--lime);
+  filter: drop-shadow(0 0 6px rgba(124, 252, 0, 0.5));
+  animation: twinkle 2.4s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .55; transform: scale(.85); }
+}
+
+.subtitle {
+  margin: .5rem 0 0;
+  font-size: 1rem;
+  color: var(--ink);
+  opacity: .75;
+}
+
+/* ---------- board / grid ---------- */
+
+.board {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1rem 2rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 3rem 2.2rem;
+}
+
+/* ---------- polaroid cards ---------- */
+
+.polaroid {
+  position: relative;
+  margin: 0;
+  background: var(--snow);
+  padding: 14px 14px 52px;
+  border-radius: 3px;
+  box-shadow:
+    0 10px 18px -8px var(--shadow),
+    0 2px 4px rgba(91, 70, 54, 0.12);
+  transition: transform .35s ease, box-shadow .35s ease;
+  cursor: default;
+}
+
+.polaroid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 1px;
+  filter: saturate(0.92) contrast(1.02);
+}
+
+.polaroid figcaption {
+  font-family: 'Caveat', cursive;
+  font-size: 1.35rem;
+  text-align: center;
+  margin-top: 12px;
+  color: var(--ink);
+}
+
+.tilt-1 { transform: rotate(-4deg); }
+.tilt-2 { transform: rotate(3deg); }
+.tilt-3 { transform: rotate(-2deg); }
+
+.polaroid:hover {
+  transform: rotate(0deg) translateY(-6px) scale(1.03);
+  box-shadow:
+    0 22px 30px -12px var(--shadow),
+    0 4px 8px rgba(91, 70, 54, 0.15);
+  z-index: 5;
+}
+
+/* ---------- washi tape corners ---------- */
+
+.polaroid::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 70px;
+  height: 26px;
+  transform: translateX(-50%) rotate(-3deg);
+  opacity: 0.85;
+  box-shadow: 0 2px 3px rgba(91, 70, 54, 0.15);
+}
+
+.tape-mint::before  { background: var(--sky-mint); }
+.tape-coral::before { background: var(--coral); }
+.tape-lime::before   { background: var(--lime); opacity: .8; }
+
+/* slight variety so tape doesn't look identical on every card */
+.tilt-2::before { transform: translateX(-50%) rotate(4deg); }
+.tilt-3::before { transform: translateX(-50%) rotate(-6deg); }
+
+/* ---------- footer ---------- */
+
+.desk-footer {
+  text-align: center;
+  padding: 2rem 1rem 3rem;
+  font-size: .9rem;
+  color: var(--ink);
+  opacity: .7;
+}
+
+.heart {
+  color: var(--coral);
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 480px) {
+  .board {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 1rem;
+    padding: 0 1.2rem 3rem;
+  }
+
+  .polaroid {
+    padding: 8px 8px 36px;
+  }
+
+  .polaroid figcaption {
+    font-size: 1.1rem;
+  }
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .polaroid,
+  .sparkle {
+    transition: none;
+    animation: none;
+  }
+}
